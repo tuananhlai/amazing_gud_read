@@ -1,0 +1,14 @@
+@import "./colors.scss";
+
+.navbar {
+    background-color: $secondary !important;
+    .brand {
+        &--focus {
+            color: $focus;
+        }
+    }
+}
+
+.text-dark {
+    color: $link_text;
+}

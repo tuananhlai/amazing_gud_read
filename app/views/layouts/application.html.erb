@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="app">
+      <%= render "layouts/header" %>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

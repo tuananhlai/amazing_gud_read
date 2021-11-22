@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex" href="#"><section class="brand brand--focus">Amazing</section><section class="brand">GudRead</section></a>
+
+    <form class="d-flex ms-4">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+
+    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+        <!-- <% if user_signed_in? %>  -->
+        <li class="nav-item dropdown ms-4">
+          <%= link_to "Hello, #{"Tran Nguyen"}", "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role:"button", "data-bs-toggle":"dropdown" %>
+          <ul class="dropdown-menu dropdown-menu dropdown-menu-lg-end">
+            <li class="dropdown-item"><%= link_to "Profile", "#" %></li>
+            <li class="dropdown-item"><%= link_to "Change password", "#" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="dropdown-item"><%= link_to "Logout", "#", method: :delete, class: "text-danger" %></li>
+          </ul>
+        </li>
+        <!-- <% else %>  -->
+        <li class="nav-item d-flex align-items-center mx-4">
+          <%= link_to "Login", "#", class: "text-dark" %>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary px-4">
+            <%= link_to "Sign Up", "#", class: "text-white" %>
+          </button>
+        </li>
+        <!-- <% end %>  -->
+    </ul>
+  </div>
+</nav>
