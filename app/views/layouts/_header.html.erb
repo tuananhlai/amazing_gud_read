@@ -8,7 +8,7 @@
     </form>
 
     <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-        <!-- <% if user_signed_in? %>  -->
+        <!-- if user_signed_in?  -->
         <li class="nav-item dropdown ms-4">
           <%= link_to "Hello, #{"Tran Nguyen"}", "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role:"button", "data-bs-toggle":"dropdown" %>
           <ul class="dropdown-menu dropdown-menu dropdown-menu-lg-end">
@@ -18,7 +18,7 @@
             <li class="dropdown-item"><%= link_to "Logout", "#", method: :delete, class: "text-danger" %></li>
           </ul>
         </li>
-        <!-- <% else %>  -->
+        <!-- else  -->
         <li class="nav-item d-flex align-items-center mx-4">
           <%= link_to "Login", "#", class: "text-dark" %>
         </li>
@@ -27,7 +27,7 @@
             <%= link_to "Sign Up", "#", class: "text-white" %>
           </button>
         </li>
-        <!-- <% end %>  -->
+        <!-- end  -->
     </ul>
   </div>
 </nav>
