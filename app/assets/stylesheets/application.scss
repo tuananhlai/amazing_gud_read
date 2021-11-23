@@ -23,3 +23,32 @@ a {
     background-color: $primary !important;
     border: $primary !important;
 }
+
+.authen-form {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $primary;
+    max-width: 680px;
+    padding: 40px 60px; 
+    border-radius: 8px;
+    color: white;
+
+    h2 {
+        text-align: center;
+    }
+
+    .btn.btn-primary {
+        background-color: $focus !important;
+        padding: 15px;
+        margin-top: 25px;
+    }
+}
+
+.link {
+    color: $link_text;
+
+    &:hover {
+        color: $focus;
+    }
+}

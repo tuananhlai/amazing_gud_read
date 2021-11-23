@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex" href="#"><section class="brand brand--focus">Amazing</section><section class="brand">GudRead</section></a>
+    <%= link_to root_path, class: "navbar-brand d-flex" do %>
+      <section class="brand brand--focus">Amazing</section><section class="brand">GudRead</section>
+    <% end %>
 
     <form class="d-flex ms-4">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -8,26 +10,26 @@
     </form>
 
     <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-        <!-- if user_signed_in?  -->
+        <% if logged_in?  %>
         <li class="nav-item dropdown ms-4">
-          <%= link_to "Hello, #{"Tran Nguyen"}", "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role:"button", "data-bs-toggle":"dropdown" %>
+          <%= link_to "Hello, #{current_user.username}", "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role:"button", "data-bs-toggle":"dropdown" %>
           <ul class="dropdown-menu dropdown-menu dropdown-menu-lg-end">
             <li class="dropdown-item"><%= link_to "Profile", "#" %></li>
             <li class="dropdown-item"><%= link_to "Change password", "#" %></li>
             <li><hr class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to "Logout", "#", method: :delete, class: "text-danger" %></li>
+            <li class="dropdown-item"><%= link_to "Logout", log_out_path, method: :delete, class: "text-danger" %></li>
           </ul>
         </li>
-        <!-- else  -->
+        <% else  %>
         <li class="nav-item d-flex align-items-center mx-4">
-          <%= link_to "Login", "#", class: "text-dark" %>
+          <%= link_to "Login", log_in_path, class: "text-dark" %>
         </li>
         <li class="nav-item">
           <button type="button" class="btn btn-primary px-4">
-            <%= link_to "Sign Up", "#", class: "text-white" %>
+            <%= link_to "Sign Up", sign_up_path, class: "text-white" %>
           </button>
         </li>
-        <!-- end  -->
+        <% end  %>
     </ul>
   </div>
 </nav>
