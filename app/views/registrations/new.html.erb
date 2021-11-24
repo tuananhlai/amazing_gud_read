@@ -1,5 +1,5 @@
-<div class="container">
-  <h1>Sign Up</h1>
+<div class="authen-form">
+  <h2 class="mb-4">Sign Up</h2>
 
   <%= form_with model: @user, url: sign_up_url do |form| %>
     <% if @user.errors.any? %>
@@ -26,8 +26,10 @@
       <%= form.label :password %>
       <%= form.password_field :password, class: "form-control", placeholder: "" %>
     </div>
-    <div class="mb-3">
+    <div class="d-grid gap-2 col-6 mx-auto mb-3">
       <%= form.submit "Sign Up", class: "btn btn-primary" %>
     </div>
+
+    <p class="text-center mt-4">Already a member? <%= link_to "Log in", log_in_path, class: "link" %></p>
   <% end %>
 </div>
