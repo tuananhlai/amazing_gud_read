@@ -10,7 +10,7 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
 
     if @author.save
-      redirect_to "/authors"
+      redirect_to authors_path
     else
       render :index
     end
@@ -20,7 +20,7 @@ class AuthorsController < ApplicationController
     @author = Author.find(params[:id])
     
     if @author.update(author_params)
-      redirect_to "/authors"
+      redirect_to authors_path
     else
       render :index
     end
@@ -30,7 +30,7 @@ class AuthorsController < ApplicationController
     @author = Author.find(params[:id])
     @author.destroy
 
-    redirect_to "/authors"
+    redirect_to authors_path
   end
 
   private
