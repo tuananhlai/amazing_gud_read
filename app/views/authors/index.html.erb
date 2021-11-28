@@ -21,7 +21,7 @@
           <td><%= author.created_at %></td>
           <td>
             <button class="btn btn-outline-info bi-pencil-square"></button>
-            <button class="btn btn-outline-danger bi-trash"></button>
+            <a href="<%= author_path(author) %>" data-method="delete" data-confirm="Are you sure?" role="button" class="btn btn-outline-danger bi-trash"></a>
           </td>
         </tr>
       <% end %>
@@ -37,11 +37,11 @@
         <div class="modal-body">
           <%= form_with model: @author, id: 'form-create-author' do |form| %>
             <div>
-              <%= form.label :name %>
-              <%= form.text_field :name %>
-              <%# <% @author.errors.full_messages_for(:name).each do |message| %1> %>
-              <%#   <div><%= message %1></div> %>
-              <%# <% end %1> %>
+              <%= form.label :name, class: 'form-label' %>
+              <%= form.text_field :name, class: 'form-control' %>
+              <% @author.errors.full_messages_for(:name).each do |message| %>
+                <div class="form-text"><%= message %></div>
+              <% end %>
             </div>
 
           <% end %>
