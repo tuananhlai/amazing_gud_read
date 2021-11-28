@@ -1,0 +1,75 @@
+<div id="author-pages">
+  <h1>Authors</h1>
+  <div class="header">
+    <input type="text" class="form-control" />
+    <button id="btn-create-author" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create-author">Create Author</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @authors.each do |author| %>
+        <tr>
+          <th scope="row"><%= author.id %></th>
+          <td><%= author.name %></td>
+          <td><%= author.created_at %></td>
+          <td>
+            <button class="btn btn-outline-info bi-pencil-square"></button>
+            <button class="btn btn-outline-danger bi-trash"></button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="modal fade" id="modal-create-author" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create author</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= form_with model: @author, id: 'form-create-author' do |form| %>
+            <div>
+              <%= form.label :name %>
+              <%= form.text_field :name %>
+              <%# <% @author.errors.full_messages_for(:name).each do |message| %1> %>
+              <%#   <div><%= message %1></div> %>
+              <%# <% end %1> %>
+            </div>
+
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="btn-submit-author" type="button" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function formatDate(dateString) {
+    let dateObj = new Date(dateString)
+    return dateObj.toLocaleString("vi-VN")
+  }
+  
+  function onEditBtnClick(authorId) {
+    // show edit modal
+  }
+  
+  function onCreateBtnClick() {
+    const createAuthorForm = document.getElementById('form-create-author')
+    createAuthorForm.submit()
+  }
+
+  const createAuthorBtn = document.getElementById('btn-submit-author')
+  createAuthorBtn.addEventListener('click', onCreateBtnClick)
+
+</script>
