@@ -12,7 +12,11 @@
 
   <body>
     <div class="app">
-      <%= render "layouts/header" %>
+      <% if request.fullpath !~ %r[^/admin] %>
+        <%# show header for user's routes %>
+        <%= render "layouts/header" %>
+      <% end %>
+
       <div class="container-fluid">
         <% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>">
