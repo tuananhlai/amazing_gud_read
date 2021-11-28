@@ -1,7 +1,8 @@
-<div id="author-pages">
+<div class="author-page">
   <h1>Authors</h1>
   <div class="header">
-    <input type="text" class="form-control" />
+    <%# TODO: implement search by name %>
+    <input id="txt-search-box" type="text" class="form-control" style="max-width:25rem;" placeholder="Search by author name..." title="coming soon" />
     <button id="btn-create-author" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create-author">Create Author</button>
   </div>
   <table class="table">
@@ -35,15 +36,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <%= form_with model: @author, id: 'form-create-author' do |form| %>
+          <%= form_with model: @author, id: "form-create-author" do |form| %>
             <div>
-              <%= form.label :name, class: 'form-label' %>
-              <%= form.text_field :name, class: 'form-control' %>
+              <%= form.label :name, class: "form-label" %>
+              <%= form.text_field :name, class: "form-control" %>
               <% @author.errors.full_messages_for(:name).each do |message| %>
                 <div class="form-text"><%= message %></div>
               <% end %>
             </div>
-
           <% end %>
         </div>
         <div class="modal-footer">
@@ -55,15 +55,6 @@
   </div>
 </div>
 <script>
-  function formatDate(dateString) {
-    let dateObj = new Date(dateString)
-    return dateObj.toLocaleString("vi-VN")
-  }
-  
-  function onEditBtnClick(authorId) {
-    // show edit modal
-  }
-  
   function onCreateBtnClick() {
     const createAuthorForm = document.getElementById('form-create-author')
     createAuthorForm.submit()
