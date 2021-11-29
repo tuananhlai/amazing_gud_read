@@ -1,0 +1,100 @@
+<div class="author-page">
+  <h1>Books</h1>
+  <div class="header">
+    <%# TODO: implement search by name %>
+    <input id="txt-search-box" type="text" class="form-control" style="max-width:25rem;" placeholder="Search by book name..." title="coming soon" />
+    <button id="btn-create-book" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create-book">Create Book</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Cover URL</th>
+        <th scope="col">Authors</th>
+        <th scope="col">Genres</th>
+        <th scope="col">Description</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <th scope="row"><%= book.id %></th>
+          <td class="col-2"><%= book.name %></td>
+          <td class="col-1">
+            <% if book.photo.present? %>
+              <%= link_to "Photo cover", url_for(book.photo) %>
+            <% end %>
+          </td>
+          <td class="col-1"><%= book.authors.pluck(:name).join(", ") %></td>
+          <td class="col-1"><%= book.genres.pluck(:name).join(", ") %></td>
+          <td class="col-4"><%= book.description %></td>
+          <td><%= book.created_at %></td>
+          <td>
+            <button class="btn btn-outline-info bi-pencil-square"></button>
+            <a href="<%= book_path(book) %>" data-method="delete" data-confirm="Are you sure?" role="button" class="btn btn-outline-danger bi-trash"></a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="modal fade" id="modal-create-book" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create book</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= form_with model: @book, id: "form-create-book" do |form| %>
+            <div>
+              <%= form.label :name, class: "form-label" %>
+              <%= form.text_field :name, class: "form-control" %>
+              
+              <div class="row">
+                <div class="col">
+                  <%= form.label :author_ids, class: "form-label mt-1" %>
+                  <%= form.select :author_ids, Author.all.collect {|p| [ p.name, p.id ]},
+                                          {},
+                                          { :multiple => true, :size => 2, :class => "form-select" } %>
+                </div>
+                <div class="col">
+                  <%= form.label :genre_ids, class: "form-label mt-1" %>
+                  <%= form.select :genre_ids, Genre.all.collect {|p| [ p.name, p.id ]},
+                                          {},
+                                          { :multiple => true, :size => 2, :class => "form-select" } %>
+                </div>
+              </div>
+
+              <%= form.label :photo, class: "form-label mt-1" %>
+              <%= form.file_field :photo, class: "form-control" %>
+
+              <%= form.label :description, class: "form-label mt-1" %>
+              <%= form.text_field :description, class: "form-control" %>
+              
+              <% @book.errors.full_messages_for(:name).each do |message| %>
+                <div class="form-text"><%= message %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="btn-submit-book" type="button" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function onCreateBtnClick() {
+    const createBookForm = document.getElementById('form-create-book')
+    createBookForm.submit()
+  }
+
+  const createAuthorBtn = document.getElementById('btn-submit-book')
+  createAuthorBtn.addEventListener('click', onCreateBtnClick)
+
+</script>
