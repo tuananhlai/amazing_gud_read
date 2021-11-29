@@ -34,11 +34,8 @@ class AuthorsController < ApplicationController
   end
 
   private
-    def author_params
-      params.require(:author).permit(:name)
-    end
-
-    def is_admin?
-      redirect_to root_path unless session[:user_role] == "admin"
-    end
+  
+  def author_params
+    params.require(:author).permit(:name)
+  end
 end
