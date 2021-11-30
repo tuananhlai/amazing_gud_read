@@ -1,0 +1,67 @@
+<div class="genre-page">
+    <h1>Genres</h1>
+    <div class="header">
+      <%# TODO: implement search by name %>
+      <input id="txt-search-box" type="text" class="form-control" style="max-width:25rem;" placeholder="Search by genre name..." title="" />
+      <button id="btn-create-genre" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create-genre">Create Genre</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @genres.each do |genre| %>
+            <tr>
+                <th scope="row"><%= genre.id %></th>
+                <td><%= genre.name %></td>
+                <td><%= genre.created_at %></td>
+                <td>
+                    <button class="btn btn-outline-info bi-pencil-square"></button>
+                    <a href="<%= genre_path(genre) %>" data-method="delete" data-confirm="Are you sure?" role="button" class="btn btn-outline-danger bi-trash"></a>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="modal fade" id="modal-create-genre" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create genre</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <%= form_with model: @genre, id: "form-create-genre" do |form| %>
+                    <div>
+                        <%= form.label :name, class: "form-label" %>
+                        <%= form.text_field :name, class: "form-control" %>
+                        <% @genre.errors.full_messages_for(:name).each do |message| %>
+                        <div class="form-text"><%= message %></div>
+                        <% end %>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="btn-submit-genre" type="button" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function onCreateBtnClick() {
+      const createGenreForm = document.getElementById('form-create-genre')
+      createGenreForm.submit()
+    }
+  
+    const createGenreBtn = document.getElementById('btn-submit-genre')
+    createGenreBtn.addEventListener('click', onCreateBtnClick)
+</script>
+  

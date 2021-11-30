@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   delete "/log_out", to: "sessions#destroy"
 
   scope :admin do
-    resources :authors
+    # resources :authors
     resources :books
+    resources :genres
   end
 end
