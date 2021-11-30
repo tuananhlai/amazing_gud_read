@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   scope :admin do
     resources :authors
     resources :books
+    resources :genres
   end
 end
