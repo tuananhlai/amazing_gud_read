@@ -1,0 +1,66 @@
+<div class="author-page">
+  <h1>Authors</h1>
+  <div class="header">
+    <%# TODO: implement search by name %>
+    <input id="txt-search-box" type="text" class="form-control" style="max-width:25rem;" placeholder="Search by author name..." title="coming soon" />
+    <button id="btn-create-author" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create-author">Create Author</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @authors.each do |author| %>
+        <tr>
+          <th scope="row"><%= author.id %></th>
+          <td><%= author.name %></td>
+          <td><%= author.created_at %></td>
+          <td>
+            <button class="btn btn-outline-info bi-pencil-square"></button>
+            <a href="<%= author_path(author) %>" data-method="delete" data-confirm="Are you sure?" role="button" class="btn btn-outline-danger bi-trash"></a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="modal fade" id="modal-create-author" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create author</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= form_with model: @author, id: "form-create-author" do |form| %>
+            <div>
+              <%= form.label :name, class: "form-label" %>
+              <%= form.text_field :name, class: "form-control" %>
+              <% @author.errors.full_messages_for(:name).each do |message| %>
+                <div class="form-text"><%= message %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="btn-submit-author" type="button" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function onCreateBtnClick() {
+    const createAuthorForm = document.getElementById('form-create-author')
+    createAuthorForm.submit()
+  }
+
+  const createAuthorBtn = document.getElementById('btn-submit-author')
+  createAuthorBtn.addEventListener('click', onCreateBtnClick)
+
+</script>
