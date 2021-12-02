@@ -4,22 +4,22 @@
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :book_id, value: @book.id %>
 
-    <div>
+  <div>
     <%= f.label :rating %>
     <div class="box box-orange box-example-1to10">
-        <div class="box-body">
-            <%= f.select :rating, (1..5), {}, { id: "example-1to10" } %>
-        </div>
+      <div class="box-body">
+          <%= f.select :rating, (1..5), {}, { id: "example-1to10" } %>
+      </div>
     </div>
-    </div>
+  </div>
 
-    <div>
+  <div>
     <%= f.label :content %>
     <%= f.text_area :content, placeholder: "Create review", class: "form-control mt-1" %>
-    </div>
+  </div>
 
-    <div class="d-grid gap-2 mt-3">
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <div class="d-grid gap-2 mt-3">
+    <%= f.submit "Post", class: "btn btn-primary" %>
   </div>
 <% end %>
 
