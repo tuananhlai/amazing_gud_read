@@ -10,8 +10,8 @@
     <p>
       <%= review.content %>
     </p>
-    <div>
-      <div>
+    <div class="d-flex">
+      <div class="mr-2">
         <% pre_like = review.review_likes.find { |like| like.user_id == session[:user_id] } %>
         <% if pre_like %>
           <%= link_to 'Unlike', user_review_like_path(review, pre_like), method: :delete %>
@@ -19,6 +19,40 @@
           <%= link_to 'Like', user_review_likes_path(review), method: :post %>
         <% end %>
       </div>
+      <div>
+        <a class="link-danger" data-bs-toggle="modal" data-bs-target="#modal-create-report">Report</a>
+      </div>
+      <div>
+        <div class="modal fade" id="modal-create-report" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Report this review</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <%= form_for :report, :url => user_review_reports_path(review, :report), :html => { :id => "form-create-report" } do |f| %>
+                  <%= f.label :description, class: "form-label" %>
+                  <%= f.text_field :description, class: "form-control" %>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="btn-submit-report" type="button" class="btn btn-primary">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </li>
+<script>
+  function onCreateBtnClick() {
+    const createReportForm = document.getElementById('form-create-report')
+    createReportForm.submit()
+  }
+
+  const createReportBtn = document.getElementById('btn-submit-report')
+  createReportBtn.addEventListener('click', onCreateBtnClick)
+</script>

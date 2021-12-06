@@ -36,7 +36,7 @@ class LikesController < ApplicationController
   def find_book
     @book = Book.find_by(id: @review[:book_id])
     if @book.nil?
-      redirect_to root_path, notice: "Book doesn not exist."
+      redirect_to root_path, notice: "Book does not exist."
     end
   end
 
@@ -54,8 +54,4 @@ class LikesController < ApplicationController
       redirect_to root_path
     end
   end
-
-  # def review_like_params
-  #   params.require(:review_like).permit(:review_id)
-  # end
 end

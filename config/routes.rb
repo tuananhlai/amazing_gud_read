@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :user_books, path: :books
   resources :user_reviews, path: :reviews do
     resources :likes
+    resources :reports
   end
 
   scope :admin do
