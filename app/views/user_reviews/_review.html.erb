@@ -10,5 +10,15 @@
     <p>
       <%= review.content %>
     </p>
+    <div>
+      <div>
+        <% pre_like = review.review_likes.find { |like| like.user_id == session[:user_id] } %>
+        <% if pre_like %>
+          <%= link_to 'Unlike', user_review_like_path(review, pre_like), method: :delete %>
+        <% else %>
+          <%= link_to 'Like', user_review_likes_path(review), method: :post %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </li>
