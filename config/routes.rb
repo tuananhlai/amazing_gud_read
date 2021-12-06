@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :authors
     resources :books
     resources :genres
+    resources :reviews
   end
 end
