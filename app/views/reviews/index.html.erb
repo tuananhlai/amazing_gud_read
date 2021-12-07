@@ -12,7 +12,6 @@
                 <th scope="col">Book</th>
                 <th scope="col">Rating</th>
                 <th scope="col">Content</th>
-                <th scope="col">Likes</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -20,11 +19,10 @@
             <% @reviews.each do |review| %>
             <tr>
                 <th scope="row"><%= review.id %></th>
-                <td><%= review.users.pluck(:name).join(", ") %></td>
-                <td><%= review.books.pluck(:name).join(", ") %></td>
+                <td><%= review.user.username %></td>
+                <td><%= review.book.name %></td>
                 <td><%= review.rating %></td>
                 <td><%= review.content %></td>
-                <td><%= review. %></td>
                 <td>
                     <a href="<%= review_path(review) %>" data-method="delete" data-confirm="Are you sure?" role="button" class="btn btn-outline-danger bi-trash"></a>
                 </td>
