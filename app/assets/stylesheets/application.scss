@@ -57,3 +57,29 @@ a {
     color: $focus;
   }
 }
+
+.book-review {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 !important;
+}
+
+.highlight-text {
+  color: $focus;
+  font-weight: bold;
+}
+
+.user-review {
+  &--avatar img {
+    width: 100px;
+  }
+
+  .mr-2 {
+    margin-right: 2rem;
+  }
+}

@@ -1,0 +1,17 @@
+<div class="book-detail">
+  <div class="book-review">
+    <div class="review-form mt-3">
+      <% if logged_in? %>
+        <%= render "user_reviews/form" %>
+      <% else %>
+        <h5>Log in to write a review!</h5>
+      <% end %>
+    </div>
+
+    <div class="review-list">
+      <ul>
+        <%= render partial: "user_reviews/review", collection: @reviews %>
+      </ul>
+    </div>
+  </div>
+</div>
