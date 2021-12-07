@@ -1,0 +1,30 @@
+<div class="genre-page">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6 mt-5">
+      <div class="header">
+        Genre
+      </div>
+      <h1><%= @genre.name %></h1>
+      <p>Books that showcase particular types of <%= @genre.name %>.</p>
+      <hr class="mt-5 mb-3">
+
+      <div>
+        <h3>Featuring books</h3>
+        <div class="row mt-4">
+          <% @genre.books.each do |book| %>
+              <div class="col-3 mt-4" style="height: 300px">
+                <%= image_tag(book.photo, :style => 'height:100%; width:auto;') %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+  </div>
+
+</div>
