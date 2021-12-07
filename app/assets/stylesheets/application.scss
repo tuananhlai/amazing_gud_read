@@ -76,6 +76,10 @@ ul {
 
 .user-review {
   &--avatar img {
-      width: 100px;
+    width: 100px;
+  }
+
+  .mr-2 {
+    margin-right: 2rem;
   }
 }
