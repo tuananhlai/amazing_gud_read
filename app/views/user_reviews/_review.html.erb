@@ -1,0 +1,14 @@
+<li class="user-review d-flex my-4">
+  <div class="user-review--avatar me-3">
+    <%= image_tag "user.png" %>
+  </div>
+  <div class="user-review--user">
+    <div class="highlight-text">
+      <%= review.user.username %>
+    </div>
+    <p>rated it <%= review.rating %></p>
+    <p>
+      <%= review.content %>
+    </p>
+  </div>
+</li>

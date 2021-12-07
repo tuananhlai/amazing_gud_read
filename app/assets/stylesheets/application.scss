@@ -18,6 +18,7 @@
 @import "./authors.scss";
 @import "home";
 @import "./genres.scss";
+@import "./reviews.scss";
 
 a {
   text-decoration: none;
@@ -54,5 +55,27 @@ a {
 
   &:hover {
     color: $focus;
+  }
+}
+
+.book-review {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 !important;
+}
+
+.highlight-text {
+  color: $focus;
+  font-weight: bold;
+}
+
+.user-review {
+  &--avatar img {
+      width: 100px;
   }
 }

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post "log_in", to: "sessions#create"
   delete "/log_out", to: "sessions#destroy"
 
+  resources :user_books, path: :books
+  resources :user_reviews, path: :reviews
+
   scope :admin do
     resources :authors
     resources :books

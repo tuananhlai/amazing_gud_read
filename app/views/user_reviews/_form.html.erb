@@ -1,0 +1,61 @@
+<%= form_for @review, :url => user_reviews_path do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :book_id, value: @book.id %>
+
+  <div>
+    <%= f.label :rating %>
+    <div class="box box-orange box-example-1to10">
+      <div class="box-body">
+          <%= f.select :rating, (1..5), {}, { id: "example-1to10" } %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content, placeholder: "Create review", class: "form-control mt-1" %>
+  </div>
+
+  <div class="d-grid gap-2 mt-3">
+    <%= f.submit "Post", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>
+
+<style>
+  .br-widget {
+    display: flex;
+    align-items: center;
+  }  
+
+  .box-body {
+    border: none !important;
+    padding-top: 0 !important;
+    height: 45px !important;
+  }
+
+  .box-example-1to10 .br-wrapper {
+    margin: 0 !important;
+    left: initial !important;
+  }
+
+  .box {
+    margin-top: 0 !important;
+  }
+</style>
+
+<script>
+$(function() {
+  function ratingEnable() {
+    $('#example-1to10').barrating('show', {
+      theme: 'bars-1to10'
+    });
+  }
+
+  ratingEnable();
+});
+</script>
