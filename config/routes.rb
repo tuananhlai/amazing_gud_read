@@ -14,6 +14,14 @@ Rails.application.routes.draw do
     resources :reports
   end
 
+  resources :genres do
+    resources :genre_books, path: :books, only: [:index]
+  end
+
+  resources :authors do
+    resources :author_books, path: :books, only: [:index]
+  end
+
   scope :admin do
     resources :authors
     resources :books
