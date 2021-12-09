@@ -1,6 +1,6 @@
 class UserBooksController < ApplicationController
   def show
-    @book = Book.find_by id: params[:id]
+    @book = Book.includes(:authors).find_by id: params[:id]
 
     if @book.present?
       @review = @book.reviews.build

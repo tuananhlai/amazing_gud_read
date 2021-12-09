@@ -27,7 +27,7 @@
     <div class="mt-5 row">
       <% @genres.each do |genre| %>
         <div class="col-4">
-          <%= genre.name %>
+          <%= link_to genre.name, genre_genre_books_url(genre.id) %>
         </div>
       <% end %>
     </div>

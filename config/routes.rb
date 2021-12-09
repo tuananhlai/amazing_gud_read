@@ -23,9 +23,10 @@ Rails.application.routes.draw do
   end
 
   scope :admin do
-    resources :authors
+    # resources :authors
     resources :books
     resources :genres
+    resources :reviews
   end
 
   match "/404", to: "errors#file_not_found", via: :all

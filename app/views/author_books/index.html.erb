@@ -15,7 +15,7 @@
         <div class="row mt-4">
           <% @author.books.each do |book| %>
             <div class="col-3 mt-4" style="height: 300px">
-              <%= image_tag(book.photo, :style => 'height:100%; width:auto;') %>
+              <%= link_to image_tag(book.photo, :style => 'height:100%; width:auto;'), user_book_path(book.id) %>
             </div>
           <% end %>
         </div>
