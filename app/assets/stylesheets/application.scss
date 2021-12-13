@@ -29,6 +29,13 @@ a {
   border: $primary !important;
 }
 
+.btn-focus {
+  background-color: $focus !important;
+  padding: 15px;
+  margin-top: 25px;
+  color: white !important;
+}
+
 .authen-form {
   margin-top: 100px;
   margin-left: auto;

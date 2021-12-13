@@ -15,11 +15,11 @@
 
   <div>
     <%= f.label :content %>
-    <%= f.text_area :content, placeholder: "Create review", class: "form-control mt-1" %>
+    <%= f.text_area :content, placeholder: "Create review", class: "form-control mt-1", id: "content-input" %>
   </div>
 
   <div class="d-grid gap-2 mt-3">
-    <%= f.submit "Post", class: "btn btn-primary" %>
+    <%= f.submit "Post", class: "btn btn-focus", id: "submit-rv-btn" %>
   </div>
 <% end %>
 
@@ -49,13 +49,23 @@
 </style>
 
 <script>
-$(function() {
-  function ratingEnable() {
-    $('#example-1to10').barrating('show', {
-      theme: 'bars-1to10'
-    });
-  }
+  $(function() {
+    function ratingEnable() {
+      $('#example-1to10').barrating('show', {
+        theme: 'bars-1to10'
+      });
+    }
 
-  ratingEnable();
-});
+    ratingEnable();
+  });
+
+  if($('#content-input').val() ==  "") 
+    $('#submit-rv-btn').attr('disabled', true);
+
+  $('#content-input').keyup(function(){
+    if($('#content-input').val() !=  "") 
+        $('#submit-rv-btn').attr('disabled', false);    
+    else
+        $('#submit-rv-btn').attr('disabled', true);   
+  });
 </script>

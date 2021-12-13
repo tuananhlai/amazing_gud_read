@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def has_login?
     redirect_to "/log_in" unless session[:user_id] != nil
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end  
 end
