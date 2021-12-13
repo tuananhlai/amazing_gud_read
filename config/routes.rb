@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :books
     resources :genres
     resources :reviews
+    resources :users
   end
 
   match "/404", to: "errors#file_not_found", via: :all
