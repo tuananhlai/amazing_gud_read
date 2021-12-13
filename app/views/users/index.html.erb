@@ -1,0 +1,73 @@
+
+<div class="user-page">
+  <h1>Users</h1>
+  <div class="header">
+    <%# TODO: implement search by name %>
+    <input id="txt-search-box" type="text" class="form-control" style="max-width:25rem;" placeholder="Search by user name..." title="coming soon" />
+    <%# <button id="btn-create-user" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create-user">Create User</button> %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Email</th>
+        <th scope="col">Username</th>
+        <th scope="col">Role</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= user.email %></td>
+          <td><%= user.username %></td>
+          <td><%= user.role %></td>
+          <td><%= user.birthday %></td>
+          <td><%= user.created_at %></td>
+          <td>
+            <button class="btn btn-outline-info bi-pencil-square"></button>
+            <a href="<%= user_path(user) %>" data-method="delete" data-confirm="Are you sure?" role="button" class="btn btn-outline-danger bi-trash"></a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%# <div class="modal fade" id="modal-create-user" tabindex="-1"> %>
+  <%#   <div class="modal-dialog"> %>
+  <%#     <div class="modal-content"> %>
+  <%#       <div class="modal-header"> %>
+  <%#         <h5 class="modal-title">Create user</h5> %>
+  <%#         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
+  <%#       </div> %>
+  <%#       <div class="modal-body"> %>
+  <%#         <%= form_with model: @user, id: "form-create-user" do |form| %1> %>
+  <%#           <div> %>
+  <%#             <%= form.label :name, class: "form-label" %1> %>
+  <%#             <%= form.text_field :name, class: "form-control" %1> %>
+  <%#             <% @user.errors.full_messages_for(:name).each do |message| %1> %>
+  <%#               <div class="form-text"><%= message %1></div> %>
+  <%#             <% end %1> %>
+  <%#           </div> %>
+  <%#         <% end %1> %>
+  <%#       </div> %>
+  <%#       <div class="modal-footer"> %>
+  <%#         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> %>
+  <%#         <button id="btn-submit-user" type="button" class="btn btn-primary">Create</button> %>
+  <%#       </div> %>
+  <%#     </div> %>
+  <%#   </div> %>
+  <%# </div> %>
+</div>
+<script>
+  function onCreateBtnClick() {
+    const createUserForm = document.getElementById('form-create-user')
+    createUserForm.submit()
+  }
+
+  const createUserBtn = document.getElementById('btn-submit-user')
+  createUserBtn.addEventListener('click', onCreateBtnClick)
+
+</script>
