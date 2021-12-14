@@ -24,7 +24,7 @@
                 <td><%= review.book.name %></td>
                 <td><%= review.rating %></td>
                 <td><%= review.content %></td>
-                <td><%= review.review_like.count('review_id') %></td>
+                <td><%= review.review_likes.count('review_id') %></td>
                 <td>
                     <a href="<%= review_path(review) %>" data-method="delete" data-confirm="Are you sure?" role="button" class="btn btn-outline-danger bi-trash"></a>
                 </td>
