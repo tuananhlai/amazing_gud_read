@@ -29,6 +29,13 @@ a {
   border: $primary !important;
 }
 
+.btn-focus {
+  background-color: $focus !important;
+  padding: 15px;
+  margin-top: 25px;
+  color: white !important;
+}
+
 .authen-form {
   margin-top: 100px;
   margin-left: auto;
@@ -55,5 +62,31 @@ a {
 
   &:hover {
     color: $focus;
+  }
+}
+
+.book-review {
+  //width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 !important;
+}
+
+.highlight-text {
+  color: $focus;
+  font-weight: bold;
+}
+
+.user-review {
+  &--avatar img {
+    width: 100px;
+  }
+
+  .mr-2 {
+    margin-right: 2rem;
   }
 }

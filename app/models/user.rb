@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   validate :validate_age
 
+  has_many :reviews, dependent: :destroy
+
   private
 
   def alter_email

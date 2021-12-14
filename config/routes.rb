@@ -8,10 +8,27 @@ Rails.application.routes.draw do
   post "log_in", to: "sessions#create"
   delete "/log_out", to: "sessions#destroy"
 
+  resources :user_books, path: :books
+  resources :user_reviews, path: :reviews do
+    resources :likes
+    resources :reports
+  end
+
+  resources :genres do
+    resources :genre_books, path: :books, only: [:index]
+  end
+
+  resources :authors do
+    resources :author_books, path: :books, only: [:index]
+  end
+
   scope :admin do
-    resources :authors
+    # resources :authors
     resources :books
     resources :genres
     resources :reviews
+    resources :users
   end
+
+  match "/404", to: "errors#file_not_found", via: :all
 end
