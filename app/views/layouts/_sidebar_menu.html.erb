@@ -1,0 +1,25 @@
+
+<nav class="navbar sidebar navbar-light bg-light">
+<div class="logo">
+        <%= link_to root_path, class: "navbar-brand d-flex" do %>
+        <section class="brand brand--focus">Amazing</section><section class="brand">GudRead</section>
+        <% end %>
+</div>
+<div class="menu">
+        <ul>
+                <li>
+                        <i class="bi bi-people"></i><%= link_to "Users", "/admin/users"%>
+                </li>
+                <li>
+                        <i class="bi bi-book"></i><%= link_to "Books", "/admin/books"%>
+                </li>
+                <li>
+                        <i class="bi bi-star"></i><%= link_to "Reviews", "/admin/reviews"%>
+                </li>
+                <li><i class="bi bi-exclamation-octagon"></i><%= link_to "Reports", "#" %></li>
+                <li><i class="bi bi-person-circle"></i><%= link_to "Authors", "/admin/authors" %></li>
+                <li><i class="bi bi-collection-play"></i><%= link_to "Genres", "/admin/genres" %></li>
+        </ul>
+</div>
+</nav>
+
