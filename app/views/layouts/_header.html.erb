@@ -10,7 +10,13 @@
     </form>
 
     <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-        <% if logged_in?  %>
+      <%if logged_in? && is_admin? %>
+        <li class="nav-item d-flex align-items-center mx-4">
+          <%= link_to "Admin", books_path, class: "text-dark" %>
+        </li>
+      <% end %>
+
+      <% if logged_in?  %>
         <li class="nav-item dropdown ms-4">
           <%= link_to "Hello, #{current_user.username}", "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role:"button", "data-bs-toggle": "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-lg-end">
@@ -29,7 +35,7 @@
             <%= link_to "Sign Up", sign_up_path, class: "text-white" %>
           </button>
         </li>
-        <% end  %>
+      <% end  %>
     </ul>
   </div>
 </nav>
