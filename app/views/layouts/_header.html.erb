@@ -12,8 +12,8 @@
     <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
         <% if logged_in?  %>
         <li class="nav-item dropdown ms-4">
-          <%= link_to "Hello, #{current_user.username}", "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role:"button", "data-bs-toggle":"dropdown" %>
-          <ul class="dropdown-menu dropdown-menu dropdown-menu-lg-end">
+          <%= link_to "Hello, #{current_user.username}", "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role:"button", "data-bs-toggle": "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-lg-end">
             <li class="dropdown-item"><%= link_to "Profile", "#" %></li>
             <li class="dropdown-item"><%= link_to "Change password", "#" %></li>
             <li><hr class="dropdown-divider"></li>
